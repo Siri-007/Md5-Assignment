@@ -61,7 +61,7 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
     };
 
     // On page load (before images or CSS)
-    document.addEventListener("DOMContentLoaded", function(event) {
+    document.addEventListener("DOMContentLoaded", function() {
         showLoading("#main-content");
         $ajaxUtils.sendGetRequest(
             allCategoriesUrl,
@@ -71,16 +71,16 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
     function buildAndShowHomeHTML(categories) {
         // Load home snippet page
         $ajaxUtils.sendGetRequest(
-            homeHtml,
-            function(homeHtml) {
+            homeHtmlUrl,
+            function(homeHtmlUrl) {
                 $ajaxUtils.sendGetRequest(
-                    chooseRandomCategoryHtml,
+                    chooseRandomCategory,
                     function(chooseRandomCategoryHtml) {
                         var chosenCategoryShortName =
                             buildchosenCategoryShortNameHtml(categories,
                                 categoriesTitleHtml,
                                 categoryHtml,
-                                homeHtml);
+                                homeHtmlUrl);
                         insertHtml("#main-content", chosenCategoryShortName, chooseRandomCategoryHtml);
                     },
                     false);
