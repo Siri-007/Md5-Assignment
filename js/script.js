@@ -71,7 +71,7 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
             },
             false);
     });
-    dc.loadMenuCategories = function() {
+    dc.loadMenuCategories = function(homeHtmlUrl) {
         showLoading("#main-content")
         $ajaxUtils.sendGetRequest
         homeHtmlUrl,
@@ -97,13 +97,13 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
             }, false);
     }
 
-    function chosenCategoryShortNameHtml(chooseRandomCategory,
+    function homeHtmlUrl(chooseRandomCategory,
         categoriesTitleHtml,
         categoryHtml, ) {
-        var finalHtml = chosenCategoryShortNameHtml;
+        var finalHtml = homeHtmlUrl;
         finalHtml += "<section class ='row'";
         for (var i = 0; i < categories.length; i++) {
-            var html = chosenCategoryShortNameHtml;
+            var html = homeHtmlUrl;
             var randomCategoryShortName = "" + categories[i].randomCategoryShortName;
             var chosenCategoryShortName = categories[i].chosenCategoryShortName;
             html =
@@ -115,7 +115,7 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
         finalHtml += "<\section>";
         return finalHtml;
     }
-    dc.loadMenuItems('L') = function(ChooseRandomCategory) {
+    dc.loadMenuItems = function(ChooseRandomCategory) {
         showLoading("main-content");
         $ajaxUtils.sendGetRequest(
             ChooseRandomCategory,
@@ -138,8 +138,6 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
             allCategoriesUrl,
             buildAndShowCategoriesHTML);
     };
-
-
     // Load the menu items view
     // 'categoryShort' is a short_name for a category
     dc.loadMenuItems = function(categoryShort) {
